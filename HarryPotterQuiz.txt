@@ -1,0 +1,101 @@
+[
+
+  {
+    question: "Who wrote Harry Potter?",
+    answers: {
+      a: "JK Rowling",
+      b: "Cressida Cowel",
+      c: "Jake Rowling"
+    },
+    correctAnswer: "a"
+  },
+  {
+    question: "What is the name of Harry's second son?",
+    answers: {
+      a: "Albus Severus Potter",
+      b: "Severus Dumbledor Potter",
+      c: "James Potter"
+    },
+    correctAnswer: "a"
+  },
+  {
+    question: "Who kills Nagini?",
+    answers: {
+      a: "Hermione Granger",
+      b: "Neville Longbottom",
+      c: "Harry Potter",
+      d: "Luna Lovegood"
+    },
+    correctAnswer: "b"
+  },
+{
+  question: "What doe Madame Maxime tell Hagrid that her horses drink?",
+  answers: {
+    a: "Champagne",
+    b: "Whiskey",
+    c: "Rosé",
+    d: "Holy Water"
+  },
+  correctAnswer: "b"
+},
+{
+  question: "What is Hermiones middle name?",
+  answers: {
+    a: "Jean",
+    b: "Watson",
+    c: "May",
+    d: "Margaret"
+  },
+  correctAnswer: "a"
+},
+{
+  question: "What name does Hermione give when caught by the snatchers in Harry Potter and the Deathly Hallows?",
+  answers: {
+    a: "Luna Lovegood",
+    b: "Parvati Patel",
+    c: "Penolope Clearwater",
+    d: "Ginny Weasly"
+  },
+  correctAnswer: "c"
+},
+{
+  question: "During which celebratory feast does Professor Quirrell inform everybody of a troll?",
+  answers: {
+    a: "Halloween",
+    b: "Christmas",
+    c: "Easter",
+    d: "Valentines Day"
+  },
+  correctAnswer: "a"
+},
+{
+  question: "What type of sweets does Bertie Bott make?",
+  answers: {
+    a: "Fizzing Whizpoppers",
+    b: "Chocolate Frogs",
+    c: "Every-flavour Jelly Babies",
+    d: "Every-Flavour Beans"
+  },
+  correctAnswer: "d"
+},
+{
+  question: "Which member of the Weasly family has his ear cursed off?",
+  answers: {
+    a: "Fred",
+    b: "George",
+    c: "Percy",
+    d: "Arthur"
+  },
+  correctAnswer: "b"
+},
+{
+  question: "How many staircases are their in Hogwarts?",
+  answers: {
+    a: "143",
+    b: "153",
+    c: "7",
+    d: "1430"
+  },
+  correctAnswer: "a"
+}
+];

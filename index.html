@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Books - Home</title>
+    <!-- <link type="text/css" rel="stylesheet" href="assets/css/bryns_books_stylesheet.css"/> -->
+    <link type="text/css" rel="stylesheet" href="assets/css/bryns-books-index.css"/>
+    <link type="text/css" rel="stylesheet" href="assets/css/page-layout.css"/>
+    <meta charset="utf-8"/>
+    <script src="assets/javascript/getbooks.js" type="text/javascript"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  </head>
+  <body onload="getBooks(ISBNorLastRow)">
+    <div class="wrapper">
+      <header>
+             <nav>
+                   <ul><li><a href="index.html">home</a></li><li><a href="bookreview.html">book of the month</a></li><li><a href="archive.html">archive</a></li><li><a href="quiz.html">quiz</a></li></ul>
+             </nav>
+      </header>
+      <main>
+      <h1 class="pageTitle">Bryn's Books</h1>
+        <p>Hi! I'm Bryn Patel Stephens and this is a site where I have written all the code for myself except I had some help with the Javascript.If you would like to submit a review for my website fill in <a href="https://forms.gle/mgEd2QVpQTanRaai8">this form</a>, though I cannot promise it will make it onto the site. This site is my collection of some of my favourite ever books and my thoughts on them. Regularly either me or my friend will publish a new review and the old one will be moved to the archive. I hope you enjoy mine and my friends reviews and hopefully I'll be able to persuade you to buy them!</p>
+        <div class="twocolumn">
+        <a href="quiz.html"><aside class="visual_link" id="QuizLink"><span class="visual_link_text">Quiz</span></aside></a>
+        <a href="bookreview.html"><aside class="visual_link book thumbnail" id="BookLink"><span class="visual_link_text">Book of the Month</span></aside></a>
+        </div>
+      </main>
+      <footer>
+        <p>Powered by Brynteresting!</p>
+      </footer>
+    </div>
+  </body>
+</html>

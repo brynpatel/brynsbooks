@@ -1,0 +1,39 @@
+@import url(https://fonts.googleapis.com/css?family=Work+Sans:300,600);
+
+.visual_link {
+  height: 400px;
+  display: flex;
+  align-items: flex-end;
+}
+
+#QuizLink {
+ background-image: url("../img/quiz.jpg");
+ background-color: #cccccc;
+ vertical-align: bottom;
+}
+
+#BookLink {
+ background-color: #cccccc;
+ background-repeat: no-repeat;
+ background-size: contain;
+ background-position: center;
+}
+
+div .visual_link_text{
+  background-color: white;
+  opacity: 0.9;
+  font-family: "Arial Black", sans-serif;
+  color: black;
+  height: 15%;
+  width: 100%;
+  font-size: xx-large;
+  text-align: center;
+  text-decoration: none;
+}
+
+.pageTitle {
+  text-align: center;
+}
+
+
+
