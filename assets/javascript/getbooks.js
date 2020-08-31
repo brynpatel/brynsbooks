@@ -21,7 +21,6 @@ function getBooks(f) {
 }
 
 function setThumb( response, img ) {
-  //var thumb = "";
   if(response.totalItems > 0){
     item = response.items[0];
     if (typeof(item.volumeInfo.imageLinks) != "undefined") {
