@@ -1,7 +1,7 @@
 function getBooks(f) {
   var p1 = $.get({
     dataType: 'json',
-    url: 'https://spreadsheets.google.com/feeds/list/1Ae7qTNZi_DCz76_7LLUpGHAVRiugabSM0tpmjYO0erc/2/public/full?alt=json',
+    url: 'https://sheets.googleapis.com/v4/spreadsheets/1Ae7qTNZi_DCz76_7LLUpGHAVRiugabSM0tpmjYO0erc/values/Sheet2!C:M?key=AIzaSyDdiKKLJdrowiZCsBC_5jHmgTYGCOvQ_cE'
   });
     p1.done(function( data ) {
       f(data);
@@ -21,7 +21,7 @@ function getBooks(f) {
 }
 
 function setThumb( response, img ) {
-  var thumb = "";
+  //var thumb = "";
   if(response.totalItems > 0){
     item = response.items[0];
     if (typeof(item.volumeInfo.imageLinks) != "undefined") {
@@ -49,17 +49,16 @@ function setBooklink( response, e ) {
 
 
 function parseRow( item ) {
-  var title = item.gsx$title.$t,
-      author = item.gsx$author.$t,
-    plot = item.gsx$whatwasthestoryabout.$t,
-    favouriteBit = item.gsx$whatwasyourfavouritebitandwhy.$t,
-    favouriteCharacter = item.gsx$whatwasyourfavouritecharacterandwhy.$t,
-    didntLike = item.gsx$whatdidntyoulike.$t,
-    rating = item.gsx$howmanystarswouldyougiveit.$t,
-    tag1 = item.gsx$whatwasthereadinglevel.$t,
-    tag2 = item.gsx$thebookgenretickallthatapply.$t,
-    reviewAuthor = item.gsx$whatnamedoyouwantthisreviewtobepublishedunder.$t,
-    ISBN = item.gsx$isbn.$t;
+  var title = item[0],
+      author = item[1],
+      plot = item[3],
+      favouriteBit = item[4],
+      favouriteCharacter = item[5],
+      rating = item[7],
+      tag1 = item[8],
+      tag2 = item[2],
+      reviewAuthor = item[10],
+      ISBN = item[9];
 
   var ratingText = "Star rating: ";
   var i = 0;
@@ -80,42 +79,43 @@ function parseRow( item ) {
 function ISBNorLastRow( response ) {
   if (window.location.hash) {
     ISBN = window.location.hash.substring(1)
-    filteredItems = getLinesByISBN(response.feed.entry, ISBN)
+    filteredItems = getLinesByISBN(response.values, ISBN)
     if(filteredItems.length==1) {
      parseRow(filteredItems[0])
      return;
     }
   }
-  list = response.feed.entry
+  list = response.values
   item = list[list.length-1];
   parseRow(item);
 }
 
 function getLinesByISBN(rowArray,ISBN){
   return rowArray.filter(
-    function(rowArray){ return rowArray.gsx$isbn.$t == ISBN}
+    function(rowArray){ return rowArray[9] == ISBN}
   );
 }
 
 function parseSheet( response ) {
-  $.each( response.feed.entry, function( i, item ) {
-      var title = item.gsx$title.$t,
-          author = item.gsx$author.$t,
-          plot = item.gsx$whatwasthestoryabout.$t,
-          favouriteBit = item.gsx$whatwasyourfavouritebitandwhy.$t,
-          favouriteCharacter = item.gsx$whatwasyourfavouritecharacterandwhy.$t,
-          didntLike = item.gsx$whatdidntyoulike.$t,
-          rating = item.gsx$howmanystarswouldyougiveit.$t,
-          tag1 = item.gsx$whatwasthereadinglevel.$t,
-          tag2 = item.gsx$thebookgenretickallthatapply.$t,
-          ISBN = item.gsx$isbn.$t,
-          thumb = "/assets/img/loading.gif";
+  $.each( response.values, function( i, item ) {
+    if(i>0) {
+      var title = item[0],
+          author = item[1],
+          plot = item[3],
+          favouriteBit = item[4],
+          favouriteCharacter = item[5],
+          rating = item[7],
+          tag1 = item[8],
+          tag2 = item[2],
+          reviewAuthor = item[10],
+          ISBN = item[9];
+          thumb = "assets/img/no_cover_thumb.gif";
 
       var ratingText = "Star rating: ";
-      var i = 0;
-      while (i<rating) {
+      var j = 0;
+      while (j<rating) {
         ratingText += "\u2b50";
-        i++;
+        j++;
       }
 
       divHtml = $("<div>").html("<br />" + title + "<br />" + author + "<br />" + ratingText);
@@ -128,8 +128,8 @@ function parseSheet( response ) {
       $(imgHtml).attr('data-isbn',ISBN);
       $(linkHtml).attr('href', 'bookreview.html#'+ISBN);
       linkHtml = $(linkHtml).append(imgHtml);
-    articleHtml = $("<article>").append(linkHtml, divHtml);
-    $(".threecolumneven").append(articleHtml);
-
+      articleHtml = $("<article>").append(linkHtml, divHtml);
+      $(".threecolumneven").append(articleHtml);
+    }
   });
 }
